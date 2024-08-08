@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
 
 const JusibleWidget = () => {
   const [open, setOpen] = useState(false);
@@ -181,6 +181,7 @@ const JusibleWidget = () => {
 
 if (typeof window !== 'undefined') {
   (window as any).JusibleWidget = JusibleWidget;
+  (window as any).ReactDOM = ReactDOM;
 }
 
 export default JusibleWidget;
