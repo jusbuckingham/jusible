@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import ReactDOM from 'react-dom';
 
 const JusibleWidget = () => {
   const [open, setOpen] = useState(false);
@@ -66,7 +67,6 @@ const JusibleWidget = () => {
 
   const toggleFocus = () => {
     setFocusEnabled(!focusEnabled);
-    // Implement focus feature, for example, by adding focus outlines
     document.querySelectorAll('*').forEach((element) => {
       const htmlElement = element as HTMLElement;
       if (focusEnabled) {
@@ -100,7 +100,7 @@ const JusibleWidget = () => {
         onClick={() => setOpen(!open)} 
         className="p-2 bg-blue-600 text-white rounded-full flex items-center justify-center"
       >
-        <Image src="/accessibility-icon.jpg" alt="Accessibility Icon" width={24} height={24} />
+        <Image src="/accessibility-icon.png" alt="Accessibility Icon" width={24} height={24} />
       </button>
       {open && (
         <div className="bg-white shadow-lg rounded-lg p-4 mt-2">
@@ -178,5 +178,9 @@ const JusibleWidget = () => {
     </div>
   );
 };
+
+if (typeof window !== 'undefined') {
+  (window as any).JusibleWidget = JusibleWidget;
+}
 
 export default JusibleWidget;
