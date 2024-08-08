@@ -8,11 +8,15 @@
     widgetContainer.appendChild(rootElement);
 
     if (window.JusibleWidget) {
+      console.log('JusibleWidget is available on window');
       const { createRoot } = window.ReactDOM;
       createRoot(rootElement).render(React.createElement(window.JusibleWidget));
     } else {
       console.error("JusibleWidget is not available on window");
     }
+  };
+  script.onerror = function() {
+    console.error('Failed to load Jusible main script');
   };
   document.head.appendChild(script);
 })();
