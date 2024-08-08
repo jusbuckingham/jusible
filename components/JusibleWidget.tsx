@@ -100,7 +100,7 @@ const JusibleWidget = () => {
         onClick={() => setOpen(!open)} 
         className="p-2 bg-blue-600 text-white rounded-full flex items-center justify-center"
       >
-        <Image src="/accessibility-icon.jpg" alt="Accessibility Icon" width={24} height={24} />
+        <Image src="/accessibility-icon.png" alt="Accessibility Icon" width={24} height={24} />
       </button>
       {open && (
         <div className="bg-white shadow-lg rounded-lg p-4 mt-2">

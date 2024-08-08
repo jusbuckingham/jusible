@@ -1,7 +1,5 @@
 (function() {
-  const script = document.createElement('script');
-  script.src = 'https://jusible.vercel.app/_next/static/chunks/main.js'; // Ensure this path is correct
-  script.onload = function() {
+  function loadWidget() {
     const widgetContainer = document.createElement('div');
     document.body.appendChild(widgetContainer);
     const rootElement = document.createElement('div');
@@ -14,9 +12,19 @@
     } else {
       console.error("JusibleWidget is not available on window");
     }
-  };
-  script.onerror = function() {
-    console.error('Failed to load Jusible main script');
-  };
-  document.head.appendChild(script);
+  }
+
+  if (window.React && window.ReactDOM) {
+    loadWidget();
+  } else {
+    const reactScript = document.createElement('script');
+    reactScript.src = 'https://unpkg.com/react@17/umd/react.production.min.js';
+    reactScript.onload = () => {
+      const reactDomScript = document.createElement('script');
+      reactDomScript.src = 'https://unpkg.com/react-dom@17/umd/react-dom.production.min.js';
+      reactDomScript.onload = loadWidget;
+      document.head.appendChild(reactDomScript);
+    };
+    document.head.appendChild(reactScript);
+  }
 })();
