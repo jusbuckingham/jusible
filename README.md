@@ -17,11 +17,6 @@ Jusible is a web accessibility plugin designed to enhance the accessibility of y
 - Window
 - Images
 
-## Installation
+## Script Tag For Users
 
-### Set Up the Project
-
-**Create a New Next.js Project:**
-```bash
-npx create-next-app@latest jusible --typescript
-cd jusible
+```<script src="https://jusible.vercel.app//jusible.js"></script>```
