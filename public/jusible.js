@@ -1,5 +1,7 @@
 (function() {
+  console.log('Loading Jusible script');
   function loadWidget() {
+    console.log('Initializing Jusible widget');
     const widgetContainer = document.createElement('div');
     document.body.appendChild(widgetContainer);
     const rootElement = document.createElement('div');
@@ -20,9 +22,13 @@
     const reactScript = document.createElement('script');
     reactScript.src = 'https://unpkg.com/react@17/umd/react.production.min.js';
     reactScript.onload = () => {
+      console.log('React loaded');
       const reactDomScript = document.createElement('script');
       reactDomScript.src = 'https://unpkg.com/react-dom@17/umd/react-dom.production.min.js';
-      reactDomScript.onload = loadWidget;
+      reactDomScript.onload = () => {
+        console.log('ReactDOM loaded');
+        loadWidget();
+      };
       document.head.appendChild(reactDomScript);
     };
     document.head.appendChild(reactScript);
