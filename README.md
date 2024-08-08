@@ -19,4 +19,4 @@ Jusible is a web accessibility plugin designed to enhance the accessibility of y
 
 ## Script Tag For Users
 
-```<script src="https://jusible.vercel.app//jusible.js"></script>```
+```<script src="https://jusible.vercel.app/jusible.js"></script>```
