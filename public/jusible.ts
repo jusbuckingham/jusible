@@ -10,8 +10,8 @@
 
     if (window.JusibleWidget) {
       console.log('JusibleWidget is available on window');
-      const ReactDOM = window.ReactDOM;
-      ReactDOM.createRoot(rootElement).render(window.React.createElement(window.JusibleWidget));
+      const { createRoot } = window.ReactDOM;
+      createRoot(rootElement).render(React.createElement(window.JusibleWidget));
     } else {
       console.error("JusibleWidget is not available on window");
     }

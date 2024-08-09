@@ -1,14 +1,8 @@
 'use client';
+
 import { useState } from 'react';
 import Image from 'next/image';
 import * as ReactDOM from 'react-dom/client';
-
-declare global {
-  interface Window {
-    JusibleWidget: typeof JusibleWidget;
-    ReactDOM: typeof ReactDOM;
-  }
-}
 
 const JusibleWidget = () => {
   const [open, setOpen] = useState(false);
