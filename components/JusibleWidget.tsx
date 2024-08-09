@@ -3,6 +3,13 @@ import { useState } from 'react';
 import Image from 'next/image';
 import * as ReactDOM from 'react-dom/client';
 
+declare global {
+  interface Window {
+    JusibleWidget: typeof JusibleWidget;
+    ReactDOM: typeof ReactDOM;
+  }
+}
+
 const JusibleWidget = () => {
   const [open, setOpen] = useState(false);
   const [highlightLinks, setHighlightLinks] = useState(false);
@@ -22,11 +29,7 @@ const JusibleWidget = () => {
     setHighlightLinks(!highlightLinks);
     document.querySelectorAll('a').forEach((link) => {
       const element = link as HTMLElement;
-      if (!highlightLinks) {
-        element.style.backgroundColor = 'yellow';
-      } else {
-        element.style.backgroundColor = '';
-      }
+      element.style.backgroundColor = !highlightLinks ? 'yellow' : '';
     });
   };
 
@@ -68,11 +71,7 @@ const JusibleWidget = () => {
     setFocusEnabled(!focusEnabled);
     document.querySelectorAll('*').forEach((element) => {
       const htmlElement = element as HTMLElement;
-      if (focusEnabled) {
-        htmlElement.style.outline = '';
-      } else {
-        htmlElement.style.outline = '2px solid blue';
-      }
+      htmlElement.style.outline = focusEnabled ? '' : '2px solid blue';
     });
   };
 
@@ -95,8 +94,8 @@ const JusibleWidget = () => {
 
   return (
     <div className="fixed bottom-0 right-0 m-4 z-50">
-      <button 
-        onClick={() => setOpen(!open)} 
+      <button
+        onClick={() => setOpen(!open)}
         className="p-2 bg-blue-600 text-white rounded-full flex items-center justify-center"
       >
         <Image src="/accessibility-icon.jpg" alt="Accessibility Icon" width={24} height={24} />
@@ -179,8 +178,8 @@ const JusibleWidget = () => {
 };
 
 if (typeof window !== 'undefined') {
-  (window as any).JusibleWidget = JusibleWidget;
-  (window as any).ReactDOM = ReactDOM;
+  window.JusibleWidget = JusibleWidget;
+  window.ReactDOM = ReactDOM;
 }
 
 export default JusibleWidget;
