@@ -7,7 +7,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "bundler", // "node" is a common alternative if you encounter issues
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",

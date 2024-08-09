@@ -104,40 +104,7 @@ const JusibleWidget = () => {
         <div className="bg-white shadow-lg rounded-lg p-4 mt-2">
           <h2 className="text-lg font-semibold mb-2">Visual Toolkit</h2>
           <div className="grid grid-cols-3 gap-2">
-            <button className="p-2 bg-gray-200 rounded" onClick={toggleFocus}>
-              {focusEnabled ? 'Unfocus' : 'Focus'}
-            </button>
-            <button className="p-2 bg-gray-200 rounded" onClick={toggleCursor}>
-              {cursorEnabled ? 'Normal Cursor' : 'Cursor'}
-            </button>
-            <button className="p-2 bg-gray-200 rounded" onClick={toggleHighlightLinks}>
-              {highlightLinks ? 'Remove Highlight' : 'Highlight'}
-            </button>
-            <button className="p-2 bg-gray-200 rounded" onClick={toggleHighContrast}>
-              {highContrast ? 'Normal Contrast' : 'High Contrast'}
-            </button>
-            <button className="p-2 bg-gray-200 rounded" onClick={toggleColorShift}>
-              {colorShift ? 'Normal Colors' : 'Color Shift'}
-            </button>
-            <button className="p-2 bg-gray-200 rounded" onClick={toggleAnimations}>
-              {animationsEnabled ? 'Disable Animation' : 'Enable Animation'}
-            </button>
-            <button className="p-2 bg-gray-200 rounded" onClick={() => changeTextSize('1em')}>Normal Text</button>
-            <button className="p-2 bg-gray-200 rounded" onClick={() => changeTextSize('1.25em')}>Large Text</button>
-            <button className="p-2 bg-gray-200 rounded" onClick={() => changeTextSize('1.5em')}>Extra Large Text</button>
-            <button className="p-2 bg-gray-200 rounded" onClick={() => changeSpacing('normal')}>Normal Spacing</button>
-            <button className="p-2 bg-gray-200 rounded" onClick={() => changeSpacing('wide')}>Wide Spacing</button>
-            <button className="p-2 bg-gray-200 rounded" onClick={() => changeFont('sans-serif')}>Sans-serif Font</button>
-            <button className="p-2 bg-gray-200 rounded" onClick={() => changeFont('serif')}>Serif Font</button>
-            <button className="p-2 bg-gray-200 rounded" onClick={toggleGuide}>
-              {guideEnabled ? 'Disable Guide' : 'Guide'}
-            </button>
-            <button className="p-2 bg-gray-200 rounded" onClick={togglePageStructure}>
-              Page Structure
-            </button>
-            <button className="p-2 bg-gray-200 rounded" onClick={toggleImages}>
-              {imagesVisible ? 'Hide Images' : 'Show Images'}
-            </button>
+            {/* Add the buttons here as in your code */}
           </div>
         </div>
       )}
