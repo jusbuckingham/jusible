@@ -1,5 +1,11 @@
 (function() {
   console.log('Loading Jusible script');
+  
+  // Define JusibleWidget here
+  window.JusibleWidget = function JusibleWidget() {
+    return React.createElement('div', null, 'Jusible Widget Loaded!');
+  };
+
   function loadWidget() {
     console.log('Initializing Jusible widget');
     const widgetContainer = document.createElement('div');
