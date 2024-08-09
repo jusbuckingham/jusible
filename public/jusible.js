@@ -1,10 +1,5 @@
 (function() {
   console.log('Loading Jusible script');
-  
-  // Define JusibleWidget here
-  window.JusibleWidget = function JusibleWidget() {
-    return React.createElement('div', null, 'Jusible Widget Loaded!');
-  };
 
   function loadWidget() {
     console.log('Initializing Jusible widget');
@@ -15,8 +10,8 @@
 
     if (window.JusibleWidget) {
       console.log('JusibleWidget is available on window');
-      const { createRoot } = window.ReactDOM;
-      createRoot(rootElement).render(React.createElement(window.JusibleWidget));
+      // Since we are using React 17, we use ReactDOM.render() instead of createRoot
+      window.ReactDOM.render(React.createElement(window.JusibleWidget), rootElement);
     } else {
       console.error("JusibleWidget is not available on window");
     }
