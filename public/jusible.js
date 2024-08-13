@@ -19,18 +19,17 @@
     }
   }
 
-  function initializeJusible() {
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  function initializeAfterLoad() {
+    if (window.React && window.ReactDOM && window.JusibleWidget) {
       loadWidget();
     } else {
-      window.addEventListener('DOMContentLoaded', loadWidget);
-      window.addEventListener('load', loadWidget);
+      console.error("JusibleWidget, React, or ReactDOM is not available after window load");
     }
   }
 
-  if (window.React && window.ReactDOM && window.JusibleWidget) {
-    loadWidget();
+  if (document.readyState === 'complete') {
+    initializeAfterLoad();
   } else {
-    initializeJusible();
+    window.addEventListener('load', initializeAfterLoad);
   }
 })();
