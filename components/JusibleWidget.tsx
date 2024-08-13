@@ -4,9 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import * as ReactDOM from 'react-dom/client';
 
-// No need to declare the global types here; let's assume they're handled elsewhere, 
-// such as in a global.d.ts file or similar.
-
 const JusibleWidget = () => {
   const [open, setOpen] = useState(false);
   const [highlightLinks, setHighlightLinks] = useState(false);
@@ -89,6 +86,38 @@ const JusibleWidget = () => {
     setShowPageStructure(!showPageStructure);
   };
 
+  const highlightPageStructure = () => {
+    document.querySelectorAll('header, nav, main, footer').forEach((element) => {
+      const htmlElement = element as HTMLElement;
+      htmlElement.style.border = showPageStructure ? '' : '2px solid red';
+    });
+  };
+
+  const renderPageStructure = () => {
+    return (
+      <div>
+        <h3 className="font-semibold">Landmarks</h3>
+        <ul>
+          {Array.from(document.querySelectorAll('header, nav, main, footer')).map((element, index) => (
+            <li key={index}>{element.tagName.toLowerCase()}</li>
+          ))}
+        </ul>
+        <h3 className="font-semibold mt-4">Headings</h3>
+        <ul>
+          {Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6')).map((element, index) => (
+            <li key={index}>{element.tagName.toLowerCase()}: {element.textContent}</li>
+          ))}
+        </ul>
+        <h3 className="font-semibold mt-4">Links</h3>
+        <ul>
+          {Array.from(document.querySelectorAll('a')).map((element, index) => (
+            <li key={index}>{element.href}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <div className="fixed bottom-0 right-0 m-4 z-50">
       <button
@@ -147,26 +176,7 @@ const JusibleWidget = () => {
                 Close
               </button>
             </div>
-            <div>
-              <h3 className="font-semibold">Landmarks</h3>
-              <ul>
-                {Array.from(document.querySelectorAll('header, nav, main, footer')).map((element, index) => (
-                  <li key={index}>{element.tagName.toLowerCase()}</li>
-                ))}
-              </ul>
-              <h3 className="font-semibold mt-4">Headings</h3>
-              <ul>
-                {Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6')).map((element, index) => (
-                  <li key={index}>{element.tagName.toLowerCase()}: {element.textContent}</li>
-                ))}
-              </ul>
-              <h3 className="font-semibold mt-4">Links</h3>
-              <ul>
-                {Array.from(document.querySelectorAll('a')).map((element, index) => (
-                  <li key={index}>{element.href}</li>
-                ))}
-              </ul>
-            </div>
+            {renderPageStructure()}
           </div>
         </div>
       )}
