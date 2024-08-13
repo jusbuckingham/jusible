@@ -19,20 +19,18 @@
     }
   }
 
-  function waitForDependencies(callback) {
-    const checkInterval = setInterval(() => {
-      if (window.React && window.ReactDOM && window.JusibleWidget) {
-        clearInterval(checkInterval);
-        callback();
-      } else {
-        console.log("Waiting for JusibleWidget, React, and ReactDOM to be available...");
-      }
-    }, 100); // Check every 100ms
+  function initializeJusible() {
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      loadWidget();
+    } else {
+      window.addEventListener('DOMContentLoaded', loadWidget);
+      window.addEventListener('load', loadWidget);
+    }
   }
 
   if (window.React && window.ReactDOM && window.JusibleWidget) {
     loadWidget();
   } else {
-    waitForDependencies(loadWidget);
+    initializeJusible();
   }
 })();
